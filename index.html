@@ -153,18 +153,18 @@
         <section class="contact" id="contact">
             <h2 class="heading">Contact <span>Me</span></h2>
 
-            <form action="#">
+            <form id="contact-form">
                 <div class="input-box">
-                    <input type="text" placeholder="Full Name">
-                    <input type="email" placeholder="Email Address">
-                </div>
-
-                <div class="input-box">
-                    <input type="number" placeholder="Mobile Number">
-                    <input type="text" placeholder="Email Subject">
-                </div>
-                <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
-                <input type="submit" value="Send Message" class="btn">
+                    <input type="text" id="name" name="name" placeholder="Full Name" required>
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                  </div>
+              
+                  <div class="input-box">
+                    <input type="number" id="phone" name="phone" placeholder="Mobile Number" required>
+                    <input type="text" id="subject" name="subject" placeholder="Email Subject" required>
+                  </div>
+                  <textarea id="message" name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+                  <input type="submit" value="Send Message" class="btn">
             </form>
         </section>
 
@@ -178,6 +178,9 @@
             </div>
         </footer>
 
+
+    <!-- Email cdn link js -->
+    <!-- <script src="https://cdn.emailjs.com/dist/email.min.js"></script> -->
     <!-- Scroll bar Js Link -->
     <script src="https://unpkg.com/scrollreveal"></script>
     <!-- Typed Js -->

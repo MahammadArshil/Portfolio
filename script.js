@@ -1,52 +1,79 @@
-let menuIcon=document.querySelector('#menu-icon');
-let navbar=document.querySelector('.navbar');
+// Toggling the navbar on menu icon click
+let menuIcon = document.querySelector('#menu-icon');
+let navbar = document.querySelector('.navbar');
+let navLinks = document.querySelectorAll('.navbar a');
 
-menuIcon.onclick = () =>{
+menuIcon.onclick = () => {
   menuIcon.classList.toggle('fa-xmark');
   navbar.classList.toggle('active');
-}
+};
 
-let sections =document.querySelectorAll('section');
-let navLinks=document.querySelectorAll('header nav a');
-
-window.onscroll=()=>{
-  sections.forEach(sec=>{
-    let top=window.scrollY;
-    let offset=sec.offsetTop-150;
-    let height=sec.offsetHeight;
-    let id=sec.getAttribute('id');
-    if(top>=offset && top < offset + height){
-      navLinks.forEach.apply(links=>{ links.classList.remove('active'); 
-        document.querySelector('header nav a[href*='+id+']').classList.add('active');
-      });
-    };
+// Close navbar after clicking on a link in responsive mode
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navbar.classList.remove('active');
+    menuIcon.classList.remove('fa-xmark');
   });
-  
+});
 
-  let header=document.querySelector('header');
-  header.classList.toggle('sticky',window.screenY>100);
+// Sticky header when scrolling
+window.onscroll = () => {
+  let header = document.querySelector('header');
+  header.classList.toggle('sticky', window.scrollY > 100);
 
+  // Collapse navbar when scrolling
   menuIcon.classList.remove('fa-xmark');
   navbar.classList.remove('active');
 };
-// New Part
+
+// Optional: ScrollReveal animations (if you want to keep them)
 ScrollReveal({
-  distance:'80px',
-  duration:2000,
-  delay:200,
-  loop:true,
+  distance: '80px',
+  duration: 2000,
+  delay: 200,
 });
 
-ScrollReveal().reveal('.home-content, heading',{origin:'top'});
-ScrollReveal().reveal('.home-img, .skill-container, .skill-box, .education-container, .education-box, .contact form',{origin:'bottom'});
-ScrollReveal().reveal('.home-contact h1, .achievement-container, .achievement-box, .about-img',{origin:'left'});
-ScrollReveal().reveal('.home-content p, .about-content',{origin:'right'});
+ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
+ScrollReveal().reveal('.home-img, .skill-container, .education-container, .contact form', { origin: 'bottom' });
+ScrollReveal().reveal('.home-contact h1, .about-img', { origin: 'left' });
+ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 
-// New Part
-const typed=new Typed('.multiple-text',{
-  strings:['Mobile Application Developer','.NET Developer','Java Developer','Web Designer'],
-  typeSpeed:70,
-  backSpeed:70,
-  backDelay:1000,
-  loop:true,
+// Optional: Typed.js animation (if you want to keep it)
+const typed = new Typed('.multiple-text', {
+  strings: ['Mobile Application Developer', '.NET Developer', 'Java Developer', 'Web Designer'],
+  typeSpeed: 70,
+  backSpeed: 70,
+  backDelay: 1000,
+  loop: true,
 });
+
+// // Initialize EmailJS
+// (function() {
+//     emailjs.init("mahammadarshil007@gmail.com");  // Replace with your actual User ID from EmailJS
+// })();
+
+// document.getElementById('contact-form').addEventListener('submit', function(event) {
+//     event.preventDefault();  // Prevent default form submission
+
+//     // Collect form data
+//     const name = document.getElementById('name').value;
+//     const email = document.getElementById('email').value;
+//     const phone = document.getElementById('phone').value;
+//     const subject = document.getElementById('subject').value;
+//     const message = document.getElementById('message').value;
+
+//     // Send email using EmailJS
+//     emailjs.send("service_gmail", "template_contact_form", {
+//         from_name: name,
+//         from_email: email,
+//         phone: phone,
+//         subject: subject,
+//         message: message
+//     })
+//     .then(function(response) {
+//         alert('Your message has been sent successfully!');
+//         document.getElementById('contact-form').reset();  // Reset form after submission
+//     }, function(error) {
+//         alert('Failed to send the message. Please try again.');
+//     });
+// });
